@@ -33,9 +33,8 @@ public class SparkFormHandling {
 				StringWriter writer = new StringWriter();
 				try {
 					Template t = conf.getTemplate("favorite_fruit.ftl");
-					Map<String, Object> map = new HashMap<>();
-					map.put("fruits", Arrays.asList("pomme", "banane",
-							"orange", "clementine"));
+					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("fruits", Arrays.asList("pomme", "banane", "orange", "clementine"));
 					t.process(map, writer);
 				} catch (Exception e) {
 					halt(500);
@@ -49,7 +48,12 @@ public class SparkFormHandling {
 			
 			@Override
 			public Object handle(Request request, Response response) {
-				return "Your favorite fruit is " + request.params("fruit");
+				String fruit = request.queryParams("fruit");
+				if(fruit == null) {
+					return "You haven't select a fruit!";
+				} else {
+					return "Your favorite fruit is " + fruit;
+				}
 			}
 		});
 	}

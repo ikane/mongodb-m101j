@@ -8,7 +8,9 @@
 		
 		<form action="/favorite_fruit" method="POST">
 			<#list fruits as fruit>
-				<input type="radio" name="fruit" value="${fruit}">${fruit}</input>
+				<p>
+					<input type="radio" name="fruit" value="${fruit}">${fruit}</input>
+				</p>
 			</#list>
 			
 			<input type="submit" value="Submit"/>
