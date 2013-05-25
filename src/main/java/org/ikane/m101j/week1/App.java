@@ -1,4 +1,4 @@
-package org.ikane.m101j;
+package org.ikane.m101j.week1;
 
 /**
  * Hello world!
